@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: malware-detector-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: malware-detector
+
+  template:
+    metadata:
+      labels:
+        app: malware-detector
+
+    spec:
+      containers:
+      - name: malware-detector
+
+        image: hammad01011/malware-detector:v1
+
+        imagePullPolicy: Always
+
+        volumeMounts:
+        - name: logs-volume
+          mountPath: /input/logs
+
+        - name: output-volume
+          mountPath: /output
+
+      volumes:
+      - name: logs-volume
+        persistentVolumeClaim:
+          claimName: logs-pvc
+
+      - name: output-volume
+        persistentVolumeClaim:
+          claimName: output-pvc
