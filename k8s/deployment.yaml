@@ -25,17 +25,11 @@ spec:
         imagePullPolicy: Always
 
         volumeMounts:
-        - name: logs-volume
-          mountPath: /input/logs
 
         - name: output-volume
           mountPath: /output
 
       volumes:
-      - name: logs-volume
-        persistentVolumeClaim:
-          claimName: logs-pvc
-
       - name: output-volume
         persistentVolumeClaim:
           claimName: output-pvc

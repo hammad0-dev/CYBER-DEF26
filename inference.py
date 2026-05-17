@@ -1,7 +1,7 @@
 import pandas as pd
 import joblib
 import os
-
+import time
 # Load trained model
 model = joblib.load("model.pkl")
 
@@ -33,3 +33,8 @@ logs.to_csv(output_file, index=False)
 
 print("Inference completed successfully.")
 print(f"Alerts saved to: {output_file}")
+
+print("Container will stay alive for monitoring...")
+
+while True:
+    time.sleep(60)

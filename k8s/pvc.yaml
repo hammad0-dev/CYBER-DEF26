@@ -5,6 +5,8 @@ metadata:
   name: logs-pvc
 
 spec:
+  storageClassName: ""
+
   accessModes:
     - ReadWriteOnce
 
@@ -20,6 +22,8 @@ metadata:
   name: output-pvc
 
 spec:
+  storageClassName: ""
+
   accessModes:
     - ReadWriteOnce
 
